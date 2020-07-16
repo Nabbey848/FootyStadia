@@ -43,7 +43,7 @@ app.locals.moment = require('moment');
 //=================
 
 app.use(require("express-session")({
-	secret: "Camp in the sun and have fun!",
+	secret: "",
 	resave: false,
 	saveUninitialized: false
 }));
