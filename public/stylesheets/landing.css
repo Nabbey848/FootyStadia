@@ -1,0 +1,77 @@
+body {
+  background: black;
+}
+
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 40vh;
+}
+
+#landing-header h1 {
+  color: #fff;
+}
+
+.slideshow { 
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
+  animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+  background-image: url(http://getwallpapers.com/wallpaper/full/4/5/5/1056395-football-stadium-wallpaper-2048x1152-photo.jpg); 
+}
+.slideshow li:nth-child(2) { 
+  background-image: url(https://mediadc.brightspotcdn.com/dims4/default/ea0cff2/2147483647/strip/true/crop/2200x1383+0+0/resize/2200x1383!/quality/90/?url=https%3A%2F%2Fmediadc.brightspotcdn.com%2F13%2Fd6%2F74bf59f743049e1baa6ba3dd4fd9%2Fbob.v23-40.2018-06-18.Jacob.jpg);
+  animation-delay: 8s; 
+}
+.slideshow li:nth-child(3) { 
+  background-image: url(https://sassets.knvb.nl/sites/knvb.com/files/styles/ls-1920x1080/public/Netherlands%20women%27s%20squad.jpg?itok=rDXyxbzB);
+  animation-delay: 16s; 
+}
+.slideshow li:nth-child(4) { 
+  background-image: url(https://cdn.ussoccer.com/-/jssmedia/project/ussf/2019-stories/07/2019-wwc-gal/wwcgalesp2.ashx?h=1001&la=en-US&w=1440&rev=ad17db8a5196f23f43184c69fd059d12&hash=0283587A74BCDB81B662C67ACDF651DC);
+  animation-delay: 24s; 
+}
+.slideshow li:nth-child(5) { 
+  background-image: url(https://i2-prod.liverpoolecho.co.uk/incoming/article16366298.ece/ALTERNATES/s1227b/0_Tottenham-Hotspur-v-Liverpool-UEFA-Champions-League-Final-Wanda-Metropolitano.jpg);
+  animation-delay: 36s; 
+}
+
+@keyframes imageAnimation { 
+  0% { 
+    opacity: 0; 
+    animation-timing-function: ease-in;
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  20% {
+    opacity: 1
+  }
+  30% {
+    opacity: 0
+  }
+}

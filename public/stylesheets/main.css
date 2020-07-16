@@ -1,0 +1,81 @@
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+.thumbnail img{
+	width: 100%;
+}
+
+.thumbnail .caption{
+	padding: 9px;
+}
+
+.inline{
+	display: inline;
+}
+
+div.logo{
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #6666ff;
+}
+
+span.logo{
+	font-size: 1.3em;
+}
+
+
+
+.container.main{
+	margin-top: 7.0em;
+}
+
+
+#delete{
+	display: inline;
+}
+.login{
+	text-align: center;
+}
+
+p.login{
+	font-size: 2.0em;
+}
+
+#lC{
+	width: 300px;
+}
+
+#rG{
+	width: 300px;
+}
+
+#eS{
+	width: 600px;
+}
+
+#tE{
+	height: 200px;
+}
+
+#eC{
+	width: 400px;
+}
+
+#nS{
+	width: 600px;
+}
+#nC{
+	width: 600px;
+}
+
+#sA{
+	margin-top: 45px;
+}
+
+
+main{
+	margin-top: 80px;
+}

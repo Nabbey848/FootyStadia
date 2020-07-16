@@ -1,0 +1,101 @@
+<% include ../partials/header %>
+
+
+<div class="ui container show">
+<div class="ui huge header"><%= stadium.name %></div>
+<div class="ui grid">
+  <div class="four wide column">
+	<div id="map"></div>
+  </div>
+  <div class="eight wide column">
+  <img class="ui centered rounded image big" src="<%= stadium.image %>">
+  <p><em>Submitted by: <%= stadium.author.username %>, <%= moment(stadium.createdAt).fromNow() %></em></p>
+  </div>
+  <div class="four wide column">
+	<p><%- stadium.description %></p>
+	<% if(currentUser && stadium.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) {%>
+		<button class="ui blue basic button"><a href="/stadiums/<%= stadium.id %>/edit">EDIT</a></button>
+		<form id="delete" action="/stadiums/<%= stadium._id %>?_method=DELETE" method="POST">
+		<button class="ui red basic button">DELETE</button>
+		</form>
+		<% } %>
+  </div>
+</div>
+<div class="ui divider"></div>
+<div class="ui huge header">Local Attractions</div>
+<div id="sA" class="ui grid">
+  <div class="four wide column">
+	
+  </div>
+  <div class="eight wide column">
+ <h3>We need your help!</h3>
+ <h3>We want the locals of the area to let us know whats up.</h3>
+ <h3>Submit your thoughts below!</h3>
+  </div>
+  <div class="four wide column">
+	
+	
+  </div>
+</div>
+
+
+	
+<div class="ui divider"></div>
+
+	<div class="ui comments">
+		<h3 class="ui header">Comments</h3>
+	<p><a class="ui green basic button" href="/stadiums/<%= stadium._id %>/comments/new">Add New Comment</a></p>
+<% for(let i = 0; i < stadium.comments.length; i++) { %>
+	
+	<div class="comment">
+    <div class="content">
+      <a class="author"><%= stadium.comments[i].author.username %></a>
+      <div class="metadata">
+        <span class="date"><%= moment(stadium.comments[i].createdAt).fromNow() %></span>
+      </div>
+      <div class="text">
+       <%= stadium.comments[i].text %>
+      </div>
+   <% if(currentUser && stadium.comments[i].author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) {%>
+		<a class="ui yellow basic button" href="/stadiums/<%= stadium._id %>/comments/<%= stadium.comments[i]._id %>/edit">Edit</a>
+		<form class="inline" action="/stadiums/<%= stadium._id %>/comments/<%= stadium.comments[i]._id %>?_method=DELETE" method="POST">
+		<input type="submit" class="ui red basic button" value="Delete">
+		</form>
+	<% } %>
+    </div>
+  </div>
+ <% } %>
+	
+</div>
+</div>
+<script>
+  function initMap() {
+    var lat = <%= stadium.lat %>;
+    var lng = <%= stadium.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= stadium.name %><br />
+      <%= stadium.location %></strong>
+      <p><%= stadium.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc6InpwpD7FDq7aKxD9cVvbwvbn5KVhGE&callback=initMap"></script>
+
+<% include ../partials/footer %>
+

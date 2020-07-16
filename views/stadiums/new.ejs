@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<div id="nS" class="ui container">
+<div class="ui form">
+<form action="/stadiums" method="POST">
+<h1>Post a New Stadium </h1>
+	<div class="field">
+	<label>Name</label>
+		<input type="text" name="name" placeholder="Name" required>
+	</div>
+	<div class="field">
+	<label>Image</label>
+		<input type="text" name="image" placeholder="Image URL" required>
+	</div>
+	<div class="field">
+	<label>Description</label>
+		<textarea name="description" placeholder="Tell us about this place!"></textarea>
+	</div>
+	<div class="field">
+		<label for="location">Location</label>
+		<input type="text" name="location" id="location" placeholder="Yosemite National Park, CA" required>
+	</div>
+	<div class="field">
+		<button class="ui green button">Submit</button>
+	</div>
+</form>
+<a href="/stadiums">Go Back</a>
+</div>
+</div>
+</div>
+<% include ../partials/footer %>

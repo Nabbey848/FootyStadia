@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Footy Stadia</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/stylesheets/main.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</head>
+<body>
+<div class="ui fixed menu">
+  <div class="ui pointing dropdown link item">
+    <div class="header logo"><i class="futbol icon logo"></i>Footy Stadia</div>
+    <i class="dropdown icon"></i>
+    <div class="menu">
+	  <a href="/stadiums" class="item">Stadia</a>
+	  <% if(currentUser && currentUser.isAdmin){ %>
+      <a href="/stadiums/new" class="item">Post Stadium</a>
+	  <% } %>
+    </div>
+  </div>
+  <div class="right menu">
+    <div class="ui search">
+		<form action="/stadiums" method="GET">
+      <div class="ui icon input">
+        <input type="text" name="search" placeholder="Search..." class="prompt">
+      </div>
+	  </form>
+    </div>
+				<% if(!currentUser){ %>
+				<a class="item" href="/login">Login</a>
+				<a class="item" href="/register">Sign Up</a>
+				<% } else{ %>
+				<a class="item"><%= currentUser.username %></a>
+				<a class="item" href="/logout">LogOut</a>
+				<% } %>
+  </div>
+</div>
+<main>
+<div class="ui container">
+<% if(error && error.length > 0) { %>
+<div class="ui negative message">
+<i class="close icon"></i>
+	<%= error %>
+</div>
+<% } %>
+</div>
+<div class="ui container">
+<% if(success && success.length > 0) { %>
+<div class="ui positive message">
+<i class="close icon"></i>
+	<%= success %>
+</div>
+<% } %>
+</div>
+
