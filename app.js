@@ -188,9 +188,9 @@ app.post("/stadiums/:id/comments", isLoggedIn, function(req, res){
 	
 });
 
-//==========================================
-//AUTHENTICATION ROUTES
-//==========================================
+//=================
+//AUTHENTICATION
+//=================
 app.get("/register", function(req, res){
 	res.render("register");
 });
@@ -234,7 +234,7 @@ app.get("/logout", function(req, res){
 });
 
 //========================
-//CAMPGROUUND EDIT LOGIC
+//STADIUM EDIT LOGIC
 //=========================
 
 app.get("/stadiums/:id/edit", checkStadiumOwnership, function(req, res){
